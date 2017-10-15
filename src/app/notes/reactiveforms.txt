@@ -4,3 +4,7 @@ upgrade angular:
 Steps to configure Reactive Forms:
 1. import ReactiveFormsModule
 2. 
+
+Steps to configure httpclient
+1. Import HttpClientModule
+2. add HttpClientModule in imports array
