@@ -1,41 +1,144 @@
 <h1>
-{{title}}
+  Emplyee works!
 </h1>
-{{empList | json}}
 
-<table class="table">
+
+<!-- {{title}}
+<input type="text" [value]="title" name="title">
+
+<input type="text" [(ngModel)]="title" name="twowaytitle"> {{employee|json}} {{employeeForm.value|json}} {{employeeForm.valid|json}}
+<form #employeeForm="ngForm" (submit)="addEmployee()" novalidate>
+  <div class="form-group">
+
+      <input class="form-control" #employeeid="ngModel" required type="number" [(ngModel)]="employee.id" name="id" placeholder="Employee Id"> {{employeeid.valid}} {{employeeid.value}} {{employeeid.invalid}} {{employeeid.pristine}} {{employeeid.dirty}}
+  </div>
+  <div class="form-group">
+
+      <input class="form-control" required type="text" [(ngModel)]="employee.name" name="name" placeholder="Employee Name">
+
+  </div>
+  <div class="form-group">
+
+      <input class="form-control" required type="number" [(ngModel)]="employee.age" name="age" placeholder="Employee Age">
+
+  </div>
+  <div>
+      <button [disabled]="employeeForm.invalid" type="submit" class="btn btn-primary">Save</button>
+  </div>
+  <div [hidden]="employeeForm.valid">
+      Some properties are missing.
+  </div>
+</form> -->
+<!-- 
+<table class='table'>
   <thead>
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Salary
-      </th>
-      <th>
-        Address
-      </th>
-    </tr>
+      <tr>
+          <th>
+              ID
+          </th>
+          <th>
+              Name
+          </th>
+          <th>
+              Salary
+          </th>
+          <th>
+              Address
+          </th>
+      </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let emp of empList">
-      <td>
-        {{emp.id}}
-      </td>
-      <td>
-        {{emp.name}}
-      </td>
-      <td>
-        {{emp.salary}}
-      </td>
-      <td>
-        {{emp.address}}
-      </td>
-    </tr>
+      <tr *ngFor="let emp of empList">
+          <td>
+              {{emp.id}}
+          </td>
+          <td>
+              {{emp.name}}
+          </td>
+          <td>
+              {{emp.salary}}
+          </td>
+          <td>
+              {{emp.address}}
+          </td>
+      </tr>
   </tbody>
 </table>
 
-<button class="btn btn-primary" (click)="hideDiv()">Toggle</button>
+<button class="btn btn-primary" (click)="hideDiv()">Toggle</button> -->
+
+<h3>Employee Reactive Form</h3>
+{{employeeForm.value | json}}
+
+<form [formGroup]="employeeForm" novalidate (submit)="addEmployee()">
+  <div class="form-group">
+      <input class="form-control" type="text" formControlName="empName" name="employeename" placeholder="Employee Name">
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="date" formControlName="dob" name="dob" placeholder="DOB">
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="number" formControlName="Exp" name="exprience" placeholder="Exprience">
+  </div>
+  <div class="form-group">
+      <input class="form-control" type="number" formControlName="pan" name="pannumber" placeholder="PAN Number">
+  </div>
+  <div formGroupName="address">
+      <div class="form-group">
+          <input class="form-control" type="text" formControlName="addressLine1" name="add1" placeholder="Address Line 1">
+      </div>
+      <div class="form-group">
+          <input class="form-control" type="text" formControlName="addressLine2" name="add2" placeholder="Address Line 2">
+      </div>
+      <div class="form-group">
+          <input class="form-control" type="text" formControlName="state" name="state" placeholder="State">
+      </div>
+      <div class="form-group">
+          <input class="form-control" type="text" formControlName="city" name="city" placeholder="City">
+      </div>
+  </div>
+
+  <div>
+      <h3>Exprience</h3>
+  </div>
+  <div *ngIf="maxExpReached">
+      <button class="btn btn-primary" (click)="addExp()">Add Card</button>
+  </div>
+
+  <div formArrayName="pastExp">
+      <div *ngFor="let pastexp of employeeForm.controls.pastExp.controls; let i=index">
+          <div>
+              <h3>
+                  Past Exprience {{i+1}}
+              </h3>
+          </div>
+          <div [formGroupName]="i">
+              <div class="form-group">
+                  <input type="text" class="form-control" formControlName="organisation" name="organisation" placeholder="Organisation">
+              </div>
+              <div class="form-group">
+                  <input type="date" class="form-control" formControlName="startDate" name="startdate" placeholder="Start Date">
+              </div>
+              <div class="form-group">
+                  <input type="date" class="form-control" formControlName="endDate" name="enddate" placeholder="End Date">
+              </div>
+              <div class="form-group">
+                  <input type="text" class="form-control" formControlName="designation" name="designation" placeholder="Designation">
+              </div>
+              <div *ngIf="i>0">
+                  <button class="btn btn-danger" (click)="removeExp(i)">Remove Experience</button>
+              </div>
+
+          </div>
+      </div>
+
+  </div>
+
+  <div class="form-group">
+      <button [disabled]="employeeForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+  </div>
+
+</form>
+<div>
+  <app-emp-list></app-emp-list>
+</div>
