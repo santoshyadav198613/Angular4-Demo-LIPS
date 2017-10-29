@@ -15,7 +15,9 @@ empList:any[];
   constructor( private emp:EmployeeServiceService) { }
 
   ngOnInit() {
-   this.empList=this.emp.getEmployee();
+   this.emp.getEmployee().subscribe(
+     (data) => this.empList=data
+   );
   }
 
 }

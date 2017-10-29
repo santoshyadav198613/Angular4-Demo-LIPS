@@ -1,5 +1,6 @@
 import { Emp } from './employee';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class EmployeeServiceService {
@@ -8,29 +9,51 @@ export class EmployeeServiceService {
 
   constructor() { }
 
-  getEmployee(): Emp []{
-    return this.employee=[
-      {empName:'emp1',empDob:new Date('Jan-23-1997'),empExp:23,empPan:786298478346,
-      empAdd: {addressLine1:'pune',addressLine2:'pune',city:'pune',state:'MH' },
-      empPastExp:[{organisation:'TCS',startDate:new Date('aug-4-2000'),endDate:new Date('jan-7-2008'),designation:'Software Developer'}]},
+  getEmployee(): Observable<Emp[]> {
+    this.employee = [
+      {
+        empName: 'emp1', empDob: new Date('Jan-23-1997'), empExp: 23, empPan: 786298478346,
+        empAdd: { addressLine1: 'pune', addressLine2: 'pune', city: 'pune', state: 'MH' },
+        empPastExp: [{
+          organisation: 'TCS', startDate: new Date('aug-4-2000'),
+          endDate: new Date('jan-7-2008'), designation: 'Software Developer'
+        }]
+      },
 
-      {empName:'emp2',empDob:new Date('Jan-23-1997'),empExp:23,empPan:786298478346,
-      empAdd: {addressLine1:'pune',addressLine2:'pune',city:'pune',state:'MH' },
-      empPastExp:[{organisation:'TCS',startDate:new Date('aug-4-2000'),endDate:new Date('jan-7-2008'),designation:'Software Developer'}]},
+      {
+        empName: 'emp2', empDob: new Date('Jan-23-1997'), empExp: 23, empPan: 786298478346,
+        empAdd: { addressLine1: 'pune', addressLine2: 'pune', city: 'pune', state: 'MH' },
+        empPastExp: [{
+          organisation: 'TCS', startDate: new Date('aug-4-2000'),
+          endDate: new Date('jan-7-2008'), designation: 'Software Developer'
+        }]
+      },
 
-      {empName:'emp3',empDob:new Date('Jan-23-1997'),empExp:23,empPan:786298478346,
-      empAdd: {addressLine1:'pune',addressLine2:'pune',city:'pune',state:'MH' },
-      empPastExp:[{organisation:'TCS',startDate:new Date('aug-4-2000'),endDate:new Date('jan-7-2008'),designation:'Software Developer'}]},
+      {
+        empName: 'emp3', empDob: new Date('Jan-23-1997'), empExp: 23, empPan: 786298478346,
+        empAdd: { addressLine1: 'pune', addressLine2: 'pune', city: 'pune', state: 'MH' },
+        empPastExp: [{
+          organisation: 'TCS', startDate: new Date('aug-4-2000'),
+          endDate: new Date('jan-7-2008'), designation: 'Software Developer'
+        }]
+      },
 
-      {empName:'emp4',empDob:new Date('Jan-23-1997'),empExp:23,empPan:786298478346,
-      empAdd: {addressLine1:'pune',addressLine2:'pune',city:'pune',state:'MH' },
-      empPastExp:[{organisation:'TCS',startDate:new Date('aug-4-2000'),endDate:new Date('jan-7-2008'),designation:'Software Developer'}]}
-    ]
+      {
+        empName: 'emp4', empDob: new Date('Jan-23-1997'), empExp: 23, empPan: 786298478346,
+        empAdd: { addressLine1: 'pune', addressLine2: 'pune', city: 'pune', state: 'MH' },
+        empPastExp: [{
+          organisation: 'TCS', startDate: new Date('aug-4-2000'),
+          endDate: new Date('jan-7-2008'), designation: 'Software Developer'
+        }]
+      }
+    ];
+
+    return Observable.of(this.employee);
 
   }
 
-  addEmployee(emp:Emp){
-    this.employee.push(emp)
+  addEmployee(emp: Emp) {
+    this.employee.push(emp);
   }
 
 }
