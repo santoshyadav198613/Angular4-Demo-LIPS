@@ -1,11 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
   
-      <div style="text-align:center">
-          <h1>
-              Welcome to {{title}}!
-          </h1>
-      </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Employee Mangement App</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li><a routerLink="post">Posts</a></li>
+            <li><a routerLink="employee">Employee</a></li>
+            <li><a routerLink="order">Order</a></li>
+            <li><a routerLink="customer">Customer</a></li>
+          </ul>
+        </div>
+      </nav>
       <!--
       <app-customer [customerList]="customerData"> </app-customer>
       
@@ -14,7 +22,7 @@
       -->
   
   
-      <app-emplyee> </app-emplyee>
+      <!-- <app-emplyee> </app-emplyee> -->
   
   
       <!--<app-order>
@@ -24,5 +32,6 @@
   
       </app-customer> -->
   
-      <app-post></app-post>
+      <!-- <app-post></app-post> -->
+      <router-outlet> </router-outlet>
   </div>

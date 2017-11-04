@@ -17,12 +17,11 @@ export class PostService {
 
   addPost(post: Posts) {
     return this.http.post<Posts>('http://jsonplaceholder.typicode.com/posts', post);
-
   }
 
   getPhotos() {
     const request = new HttpRequest('GET', 'http://jsonplaceholder.typicode.com/photos',
-      { reportProgress: true })
+      { reportProgress: true });
     return this.http.request(request);
   }
 

@@ -1,7 +1,11 @@
+
+import { HttpApiinterceptorService } from './interceptor/http-apiinterceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
@@ -15,6 +19,7 @@ import { PostService } from './service/post/post.service';
 
 import { EmployeeServiceService } from './service/employeeService/employee-service.service';
 import { OrderService } from './service/order/order.service';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,19 +29,29 @@ import { OrderService } from './service/order/order.service';
     OrderListComponent,
     EmpListComponent,
     PostComponent,
-    PostListComponent
+    PostListComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'customer', component: CustomerComponent },
+      { path: 'employee', component: EmployeeComponent },
+      { path: 'order', component: OrderComponent },
+      { path: 'post', component: PostComponent },
+      { path: '', redirectTo: 'post', pathMatch: 'full' },
+      { path: '**', component: PagenotfoundComponent }
+    ])
   ],
   providers: [
-    //OrderService,
+    // OrderService,
     { provide: OrderService, useClass: OrderService },
     PostService,
-    EmployeeServiceService
+    EmployeeServiceService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpApiinterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
