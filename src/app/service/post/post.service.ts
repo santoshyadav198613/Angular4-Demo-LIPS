@@ -10,17 +10,17 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPost() {
-    return this.http.get<Posts[]>('http://jsonplaceholder.typicode.com/posts',
+    return this.http.get<Posts[]>('https://jsonplaceholder.typicode.com/posts',
       { headers: new HttpHeaders().set('token', 'kuyf7653fi76i7dg27367ytftf').set('userid', 'jyfda65') }
     );
   }
 
   addPost(post: Posts) {
-    return this.http.post<Posts>('http://jsonplaceholder.typicode.com/posts', post);
+    return this.http.post<Posts>('https://jsonplaceholder.typicode.com/posts', post);
   }
 
   getPhotos() {
-    const request = new HttpRequest('GET', 'http://jsonplaceholder.typicode.com/photos',
+    const request = new HttpRequest('GET', 'https://jsonplaceholder.typicode.com/photos',
       { reportProgress: true });
     return this.http.request(request);
   }

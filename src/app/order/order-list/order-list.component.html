@@ -17,6 +17,9 @@
       <th>
         order date
       </th>
+      <th>
+        Details
+      </th>
   </thead>
   <tbody>
     <tr *ngFor="let order of orderList">
@@ -31,6 +34,9 @@
       </td>
       <td>
         {{order.orderDate}}
+      </td>
+      <td>
+        <button class="btn btn-primary" [routerLink]="[order.id]">Details</button>
       </td>
     </tr>
   </tbody>

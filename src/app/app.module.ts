@@ -7,9 +7,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RoutingModule } from './routing/routing.module';
 import { PostModule } from './post/post.module';
 import { CustomerModule } from './customer/customer.module';
-import {SharedModule} from './shared/shared.module';
-import {EmployeeModule} from './employee/employee.module';
-import {OrderModule} from './order/order.module';
+import { SharedModule } from './shared/shared.module';
+import { EmployeeModule } from './employee/employee.module';
+import { OrderModule } from './order/order.module';
 
 
 
@@ -25,7 +25,10 @@ import { AppComponent } from './app.component';
 
 // import { EmployeeServiceService } from './service/employeeService/employee-service.service';
 import { OrderService } from './service/order/order.service';
+import {LoginService} from './service/login/login.service';
+import {AuthGuard} from './service/guard/auth.guard';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,22 +39,26 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     // EmpListComponent,
     // PostComponent,
     // PostListComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
-    RoutingModule,
     PostModule,
     CustomerModule,
     EmployeeModule,
-    OrderModule
+    OrderModule,
+    RoutingModule,
+
   ],
   providers: [
     // OrderService,
     // { provide: OrderService, useClass: OrderService },
     // PostService,
     // EmployeeServiceService,
+    LoginService,
+    AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: HttpApiinterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]

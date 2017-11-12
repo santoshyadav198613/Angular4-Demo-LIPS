@@ -17,6 +17,9 @@
                 <th>
                     Body
                 </th>
+                <th>
+                    Deatails
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +36,7 @@
                 <td>
                     {{post.body}}
                 </td>
+                <button class="btn btn-primmary" [routerLink]="post.id">Details</button>
             </tr>
         </tbody>
     </table>

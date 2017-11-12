@@ -1,7 +1,7 @@
 import { Posts } from '../../service/post/post';
 import {HttpEventType,HttpResponse} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import{PostService}from'../../service/post/post.service'
+import{PostService}from'../../service/post/post.service';
 
 
 @Component({

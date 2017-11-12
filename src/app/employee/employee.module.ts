@@ -4,10 +4,14 @@ import { EmployeeComponent } from '../employee/employee.component';
 import { EmpListComponent } from '../employee/emp-list/emp-list.component';
 import { EmployeeServiceService } from '../service/employeeService/employee-service.service';
 import {SharedModule} from '../shared/shared.module';
+import {RouterModule} from '@angular/router';
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forChild([
+      { path: 'employee', component: EmployeeComponent }
+    ])
     
   ],
   declarations: [
