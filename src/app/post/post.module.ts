@@ -10,6 +10,7 @@ import { PostListComponent } from '../post/post-list/post-list.component';
 import { PostService } from '../service/post/post.service';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { AuthGuard } from '../service/guard/auth.guard';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,9 @@ import { AuthGuard } from '../service/guard/auth.guard';
     PostComponent,
     PostListComponent,
     PostDetailsComponent,
+    PostEditComponent,
   ],
+  entryComponents: [PostEditComponent],
   providers: [
     PostService, PostResolveGuard
   ]

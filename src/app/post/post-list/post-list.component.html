@@ -20,6 +20,9 @@
                 <th>
                     Deatails
                 </th>
+                <th>
+                    Edit
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +40,9 @@
                     {{post.body}}
                 </td>
                 <button class="btn btn-primmary" [routerLink]="post.id">Details</button>
+                <td>
+                    <button (click)="edit(post)" mat-raised-button color="primary">Edit</button>
+                </td>
             </tr>
         </tbody>
     </table>

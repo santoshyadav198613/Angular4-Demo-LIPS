@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Update Post Id: {{post.id}}</h2>
+<mat-dialog-content>
+  <form>
+    <div class="form-group">
+      <input class="form-control" type="text" [(ngModel)]="post.title" placeholder="Title" name="title">
+    </div>
+    <div>
+      <input class="form-control" type="text" [(ngModel)]="post.body" placeholder="Body" name="body">
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>No</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button mat-button (click)="save()">Yes</button>
+</mat-dialog-actions>
