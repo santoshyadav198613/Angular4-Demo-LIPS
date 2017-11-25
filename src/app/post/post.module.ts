@@ -1,3 +1,5 @@
+import { PostResolveGuard } from '../service/post/post-resolve.guard';
+
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,14 +9,23 @@ import { PostComponent } from '../post/post.component';
 import { PostListComponent } from '../post/post-list/post-list.component';
 import { PostService } from '../service/post/post.service';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { AuthGuard } from '../service/guard/auth.guard';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild([
-      { path: 'post', component: PostComponent },
-      { path: 'post/:id', component: PostDetailsComponent }
+      {
+        path: '', component: PostComponent,
+        canActivate: [AuthGuard],
+        resolve: { postList: PostResolveGuard },
+        children: [
+          { path: ':id', component: PostDetailsComponent }
+        ]
+      },
+
+
     ])
   ],
 
@@ -24,7 +35,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
     PostDetailsComponent,
   ],
   providers: [
-    PostService
+    PostService, PostResolveGuard
   ]
 
 })

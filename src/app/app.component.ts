@@ -1,3 +1,4 @@
+import { LoginService } from './service/login/login.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -16,5 +17,9 @@ export class AppComponent {
 
   toggleDiv(visible: boolean) {
     console.log(visible);
+  }
+
+  constructor(private loginService: LoginService) {
+
   }
 }

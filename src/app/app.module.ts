@@ -45,7 +45,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     SharedModule,
-    PostModule,
+    // PostModule,
     CustomerModule,
     EmployeeModule,
     OrderModule,

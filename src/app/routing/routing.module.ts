@@ -17,7 +17,7 @@ import { PagenotfoundComponent } from '../pagenotfound/pagenotfound.component';
       // { path: 'customer', component: CustomerComponent },
       // { path: 'employee', component: EmployeeComponent },
       // { path: 'order', component: OrderComponent },
-      // { path: 'post', component: PostComponent },
+      { path: 'post', loadChildren: '../post/post.module#PostModule' },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: '**', component: PagenotfoundComponent }
     ])

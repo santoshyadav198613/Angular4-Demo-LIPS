@@ -6,6 +6,7 @@ import { OrderService } from '../service/order/order.service';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { AuthGuard } from '../service/guard/auth.guard';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     RouterModule.forChild([
       {
         path: 'order',
-        component: OrderComponent,
+        component: OrderComponent, canActivate: [AuthGuard],canActivateChild:[AuthGuard],
         children: [
           { path: ':id', component: OrderDetailsComponent }
         ]
