@@ -48,7 +48,7 @@
     <button class="btn btn-primary" (click)="addCard()">Add Card</button>
   </div>
   <div formArrayName="cards">
-    <div *ngFor="let card of customerForm.controls.cards.controls;let i=index">
+    <div *ngFor="let card of customerForm['controls'].cards['controls'];let i=index">
       <div>
         <h2>Card {{i+1}}</h2>
       </div>

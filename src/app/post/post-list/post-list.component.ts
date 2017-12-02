@@ -14,7 +14,7 @@ import { PostEditComponent } from '../post-edit/post-edit.component'
 export class PostListComponent implements OnInit {
 
   posts: Posts[];
-
+  userid: number=0;
   constructor(private postService: PostService, private route: ActivatedRoute,
     public dialog: MatDialog) { }
 

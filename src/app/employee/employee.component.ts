@@ -20,6 +20,8 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private fb: FormBuilder,private empService:EmployeeServiceService) { }
 
+  // get formData() { return <FormArray>this.employeeForm.get('pastExp'); }
+
   ngOnInit() {
     this.employeeForm=this.fb.group({
       empName:new FormControl('',[Validators.required,Validators.minLength(5)]),

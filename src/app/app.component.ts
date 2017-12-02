@@ -22,7 +22,7 @@ export class AppComponent {
     console.log(visible);
   }
 
-  constructor(private loginService: LoginService) {
+  constructor(public loginService: LoginService) {
 
   }
 }

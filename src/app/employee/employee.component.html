@@ -106,7 +106,7 @@
   </div>
 
   <div formArrayName="pastExp">
-      <div *ngFor="let pastexp of employeeForm.controls.pastExp.controls; let i=index">
+      <div *ngFor="let pastexp of employeeForm['controls'].pastExp['controls']; let i=index">
           <div>
               <h3>
                   Past Exprience {{i+1}}
