@@ -29,6 +29,10 @@ import {LoginService} from './service/login/login.service';
 import {AuthGuard} from './service/guard/auth.guard';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,8 +44,7 @@ import { LoginComponent } from './login/login.component';
     // PostComponent,
     // PostListComponent,
     PagenotfoundComponent,
-    LoginComponent
-  ],
+    LoginComponent],
   imports: [
     BrowserModule,
     SharedModule,

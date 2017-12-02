@@ -2,6 +2,10 @@
     post-list works!
 </p> -->
 <div>
+        <input type="number" [(ngModel)]="userid" class="form-control" name="sort" placeholder="Sort by">
+</div>
+
+<div>
     <table>
         <thead>
             <tr>
@@ -26,18 +30,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let post of posts">
+            <tr *ngFor="let post of posts | sort : userid ">
                 <td>
-                    {{post.userId}}
+                    {{post.userId | percent }}
                 </td>
                 <td>
-                    {{post.id}}
+                    <!-- {{post.id | currency  : 'INR'}} -->
+                    {{post.id | price : '#'}}
                 </td>
                 <td>
-                    {{post.title}}
+                    {{post.title | lowercase}}
                 </td>
                 <td>
-                    {{post.body}}
+                    {{post.body | uppercase}}
                 </td>
                 <button class="btn btn-primmary" [routerLink]="post.id">Details</button>
                 <td>

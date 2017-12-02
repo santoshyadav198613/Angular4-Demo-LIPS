@@ -11,6 +11,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  loginTime: Date = new Date('26-nov-2017');
+
+
   empData = [{ id: 1, name: 'Test1', salary: 1000, address: 'Pune' },
   { id: 2, name: 'Test2', salary: 2000, address: 'Pune' },
   { id: 3, name: 'Test3', salary: 3000, address: 'Pune' }];

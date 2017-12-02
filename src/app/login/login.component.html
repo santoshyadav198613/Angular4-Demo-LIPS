@@ -4,10 +4,10 @@
 
 <form #loginForm="ngForm" (submit)="login()" class="example-form">
   <mat-form-field class="example-full-width">
-    <input type="text" matInput [(ngModel)]="user.userName" name="username" placeholder="UserName">
+    <input type="text" appPasswordValidator appHover [color]="'yellow'" matInput [(ngModel)]="user.userName" name="username" placeholder="UserName">
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input type="text" matInput [(ngModel)]="user.password" name="password" placeholder="Password">
+    <input type="text" appPasswordValidator appHover [color]="'red'" matInput [(ngModel)]="user.password" name="password" placeholder="Password">
   </mat-form-field>
   <div class="form-group">
     <button type="submit" mat-raised-button color="accent" [disabled]="loginForm.invalid">Login</button>

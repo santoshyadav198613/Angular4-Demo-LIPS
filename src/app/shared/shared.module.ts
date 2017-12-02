@@ -4,6 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/material';
+import { PricePipe } from '../custom/price.pipe';
+import { SortPipe } from '../custom/sort.pipe';
+import { HoverDirective } from '../directives/hover.directive';
+import { PasswordValidatorDirective } from '../directives/password-validator.directive';
 
 @NgModule({
   imports: [
@@ -16,7 +20,12 @@ import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/mater
     MatInputModule,
     MatDialogModule
   ],
-  declarations: [],
+  declarations: [
+    PricePipe,
+    SortPipe,
+    HoverDirective,
+    PasswordValidatorDirective
+  ],
 
   exports: [
     HttpClientModule,
@@ -25,7 +34,11 @@ import { MatButtonModule, MatInputModule, MatDialogModule } from '@angular/mater
     RouterModule,
     MatButtonModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    PricePipe,
+    SortPipe,
+    HoverDirective,
+    PasswordValidatorDirective
   ]
 })
 export class SharedModule { }
