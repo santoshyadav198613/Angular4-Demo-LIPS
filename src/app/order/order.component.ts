@@ -2,14 +2,17 @@ import { Component, OnInit, ViewChild, DoCheck } from '@angular/core';
 import { Order } from '../service/order/order';
 import { OrderService } from '../service/order/order.service';
 import { OrderListComponent } from './order-list/order-list.component';
+import { ISubscription } from 'rxjs/Subscription';
+import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, OnDestroy {
   orders = new Array<Order>();
   order: Order = new Order();
+  orderSubscription: ISubscription;
   message: string;
   @ViewChild(OrderListComponent)
   orderListComponet: OrderListComponent;
@@ -17,7 +20,10 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
-    this.orders = this.orderService.getOrders();
+    this.orderSubscription = this.orderService.getOrders().subscribe(
+      (data) => this.orders = data,
+      (err) => console.log(err)
+    )
     // this.orderListComponet.orderList = this.orders;
   }
 
@@ -31,6 +37,10 @@ export class OrderComponent implements OnInit {
 
   receiveFromChild(data: string) {
     this.message = data;
+  }
+
+  ngOnDestroy(): void {
+    this.orderSubscription.unsubscribe();
   }
 
   // addOrder() {

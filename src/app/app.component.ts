@@ -1,5 +1,6 @@
 import { LoginService } from './service/login/login.service';
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   loginTime: Date = new Date('26-nov-2017');
+
 
 
   empData = [{ id: 1, name: 'Test1', salary: 1000, address: 'Pune' },
@@ -24,5 +26,10 @@ export class AppComponent {
 
   constructor(public loginService: LoginService) {
 
+  }
+
+
+  ngOnInit(): void {
+   
   }
 }
