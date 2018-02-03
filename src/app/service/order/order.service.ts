@@ -14,4 +14,7 @@ export class OrderService {
     return this.http.get<Order[]>(this.appconfig.apiEndPoint + 'order');
 
   }
+  addOrder(order: Order){
+    return this.http.post(this.appconfig.apiEndPoint + 'order',order);
+  }
 }

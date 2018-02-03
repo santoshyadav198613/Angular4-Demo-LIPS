@@ -20,15 +20,27 @@ export class OrderComponent implements OnInit, OnDestroy {
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
-    this.orderSubscription = this.orderService.getOrders().subscribe(
-      (data) => this.orders = data,
-      (err) => console.log(err)
-    )
+    this.loadOrders();
+
     // this.orderListComponet.orderList = this.orders;
   }
 
+  loadOrders() {
+    this.orderSubscription = this.orderService.getOrders().subscribe(
+      (data) => this.orders = data,
+      (err) => console.log(err));
+  }
+
   addOrder() {
-    console.log(this.order);
+    this.orderService.addOrder(this.order).subscribe((data) => {
+      console.log(data);
+      this.loadOrders();
+    },
+      (err) => {
+        console.log(err);
+      });
+
+    this.order = new Order();
   }
 
   // ngDoCheck(): void {
