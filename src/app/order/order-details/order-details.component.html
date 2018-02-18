@@ -1,3 +1,15 @@
 <p>
 Product Details for product Id: {{productId}}
 </p>
+
+
+{{orderDetails | json}}
+
+<div *ngFor="let order of orderDetails">
+    OrderId:{{order.id}}
+    Name:{{order.customerName}}
+    Quantity:{{order.qty}}
+    Date:{{order.orderDate | date}}
+
+</div>
+

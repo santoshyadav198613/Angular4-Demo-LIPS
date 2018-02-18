@@ -16,6 +16,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   message: string;
   @ViewChild(OrderListComponent)
   orderListComponet: OrderListComponent;
+  name: string;
 
   constructor(private orderService: OrderService) { }
 
@@ -30,6 +31,14 @@ export class OrderComponent implements OnInit, OnDestroy {
       (data) => this.orders = data,
       (err) => console.log(err));
   }
+
+  search() {
+    this.orderService.getOrderByName(this.name).subscribe(
+      (data) => this.orders = data,
+      (err) => console.log(err)
+    )
+  }
+
 
   addOrder() {
     this.orderService.addOrder(this.order).subscribe((data) => {
@@ -60,3 +69,6 @@ export class OrderComponent implements OnInit, OnDestroy {
   //   this.orders = [order];
   // }
 }
+
+
+

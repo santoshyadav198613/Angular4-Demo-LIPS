@@ -33,7 +33,12 @@
   </div>
 </form>
 <hr>
+
+<input type="text" [(ngModel)]="name" class="form-control" placeholder="Customer Name">
+<button type="button" class="btn btn-primary" (click)="search()">Search</button>
 <app-order-list [orderList]="orders" [test]="'This is message'" (message)="receiveFromChild($event)"></app-order-list>
+
+
 
 {{message}}
 
